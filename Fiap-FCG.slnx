@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Fiap.FCG.API/Fiap.FCG.API.csproj" />
+    <Project Path="src/Fiap.FCG.Application/Fiap.FCG.Application.csproj" />
+    <Project Path="src/Fiap.FCG.Domain/Fiap.FCG.Domain.csproj" />
+    <Project Path="src/Fiap.FCG.Infrastructure/Fiap.FCG.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Fiap.FCG.Tests/Fiap.FCG.Tests.csproj" />
+  </Folder>
+</Solution>
