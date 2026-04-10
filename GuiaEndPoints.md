@@ -15,6 +15,7 @@ Authorization: Bearer <token>
 ### Registrar usuário
 
 ```
+Basta cadastrar e pegar o token para loga a API.
 POST /api/Auth/register
 ```
 
