@@ -360,8 +360,8 @@ Authorization: Bearer eyJhbGciOi...
 │ Name         │       │ JogoId           │──────►│ Nome         │
 │ Email        │       │ DataCompra       │       │ Descricao    │
 │ PasswordHash │       │ PrecoPago        │       │ Preco        │
-│ Role         │       │ PromocaoId?      │──┐   │ Ativo        │
-│ Perfil       │       └──────────────────┘  │   └──────┬───────┘
+│ Role         │       │ PromocaoId?      │──┐    │ Ativo        │
+│ Perfil       │       └──────────────────┘  │    └──────┬───────┘
 │ DataCriacao  │                              │          │
 │ ResetToken?  │                              │          │
 │ ResetExpira? │                              │          │
