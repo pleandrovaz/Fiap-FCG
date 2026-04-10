@@ -19,7 +19,7 @@ namespace API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<JogoDTO>>> GetAllJogos(CancellationToken cancellationToken)
+        public async Task<ActionResult<IEnumerable<JogoDTO>>> TodososJogos(CancellationToken cancellationToken)
         {
             var result = await _jogoService.GetAllJogosAsync(cancellationToken);
             if (!result.IsSuccess)
@@ -41,7 +41,7 @@ namespace API.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<JogoDTO>> CreateJogo(CreateJogoDTO dto, CancellationToken cancellationToken)
+        public async Task<ActionResult<JogoDTO>> NovoJogo(CreateJogoDTO dto, CancellationToken cancellationToken)
         {
             var result = await _jogoService.CreateJogoAsync(dto, cancellationToken);
             if (!result.IsSuccess)
@@ -52,7 +52,7 @@ namespace API.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateJogo(Guid id, UpdateJogoDTO dto, CancellationToken cancellationToken)
+        public async Task<IActionResult> AtualizarJogo(Guid id, UpdateJogoDTO dto, CancellationToken cancellationToken)
         {
             var result = await _jogoService.UpdateJogoAsync(id, dto, cancellationToken);
             if (!result.IsSuccess)

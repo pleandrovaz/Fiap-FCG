@@ -32,7 +32,7 @@ namespace FCG.Tests.TDD.Controllers
                 .Setup(s => s.GetAllPromocoesAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(Result<IEnumerable<PromocaoDTO>>.Success(promocoes));
 
-            var result = await _controller.GetAllPromocoes(CancellationToken.None);
+            var result = await _controller.TodasPromocoes(CancellationToken.None);
 
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
             var data = Assert.IsAssignableFrom<IEnumerable<PromocaoDTO>>(okResult.Value);
@@ -46,7 +46,7 @@ namespace FCG.Tests.TDD.Controllers
                 .Setup(s => s.GetAllPromocoesAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(Result<IEnumerable<PromocaoDTO>>.Failure("Erro interno", 500));
 
-            var result = await _controller.GetAllPromocoes(CancellationToken.None);
+            var result = await _controller.TodasPromocoes(CancellationToken.None);
 
             var objectResult = Assert.IsType<ObjectResult>(result.Result);
             Assert.Equal(500, objectResult.StatusCode);
@@ -116,7 +116,7 @@ namespace FCG.Tests.TDD.Controllers
                 .Setup(s => s.CreatePromocaoAsync(createDto, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(Result<PromocaoDTO>.Success(resultDto, 201));
 
-            var result = await _controller.CreatePromocao(createDto, CancellationToken.None);
+            var result = await _controller.AdicionarPromocao(createDto, CancellationToken.None);
 
             var createdResult = Assert.IsType<CreatedAtActionResult>(result.Result);
             Assert.Equal(201, createdResult.StatusCode);
@@ -140,7 +140,7 @@ namespace FCG.Tests.TDD.Controllers
                 .Setup(s => s.CreatePromocaoAsync(dto, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(Result<PromocaoDTO>.Failure("Data fim deve ser após data início", 400));
 
-            var result = await _controller.CreatePromocao(dto, CancellationToken.None);
+            var result = await _controller.AdicionarPromocao(dto, CancellationToken.None);
 
             var objectResult = Assert.IsType<ObjectResult>(result.Result);
             Assert.Equal(400, objectResult.StatusCode);
@@ -162,7 +162,7 @@ namespace FCG.Tests.TDD.Controllers
                 .Setup(s => s.CreatePromocaoAsync(dto, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(Result<PromocaoDTO>.Failure("Jogo não encontrado", 404));
 
-            var result = await _controller.CreatePromocao(dto, CancellationToken.None);
+            var result = await _controller.AdicionarPromocao(dto, CancellationToken.None);
 
             var objectResult = Assert.IsType<ObjectResult>(result.Result);
             Assert.Equal(404, objectResult.StatusCode);
@@ -189,7 +189,7 @@ namespace FCG.Tests.TDD.Controllers
                 .Setup(s => s.UpdatePromocaoAsync(id, dto, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(Result<bool>.Success(true));
 
-            var result = await _controller.UpdatePromocao(id, dto, CancellationToken.None);
+            var result = await _controller.AtualizarPromocao(id, dto, CancellationToken.None);
 
             Assert.IsType<NoContentResult>(result);
         }
@@ -210,7 +210,7 @@ namespace FCG.Tests.TDD.Controllers
                 .Setup(s => s.UpdatePromocaoAsync(id, dto, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(Result<bool>.Failure("Promoção não encontrada", 404));
 
-            var result = await _controller.UpdatePromocao(id, dto, CancellationToken.None);
+            var result = await _controller.AtualizarPromocao(id, dto, CancellationToken.None);
 
             var objectResult = Assert.IsType<ObjectResult>(result);
             Assert.Equal(404, objectResult.StatusCode);
@@ -232,7 +232,7 @@ namespace FCG.Tests.TDD.Controllers
                 .Setup(s => s.UpdatePromocaoAsync(id, dto, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(Result<bool>.Failure("Data fim deve ser após data início", 400));
 
-            var result = await _controller.UpdatePromocao(id, dto, CancellationToken.None);
+            var result = await _controller.AtualizarPromocao(id, dto, CancellationToken.None);
 
             var objectResult = Assert.IsType<ObjectResult>(result);
             Assert.Equal(400, objectResult.StatusCode);
