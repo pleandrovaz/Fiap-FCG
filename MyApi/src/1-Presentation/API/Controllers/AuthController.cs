@@ -61,7 +61,7 @@ namespace API.Controllers
         /// <summary>
         /// Redefine a senha utilizando o token de recuperação.
         /// </summary>
-        [HttpPost("reset-password")]
+        [HttpPost("resetar-senha")]
         public async Task<IActionResult> ResetPassword(ResetPasswordDTO dto, CancellationToken cancellationToken)
         {
             var result = await _usuarioService.ResetPasswordAsync(dto, cancellationToken);
