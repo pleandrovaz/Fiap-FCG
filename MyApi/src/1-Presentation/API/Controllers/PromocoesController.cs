@@ -19,7 +19,7 @@ namespace API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<PromocaoDTO>>> GetAllPromocoes(CancellationToken cancellationToken)
+        public async Task<ActionResult<IEnumerable<PromocaoDTO>>> TodasPromocoes(CancellationToken cancellationToken)
         {
             var result = await _promocaoService.GetAllPromocoesAsync(cancellationToken);
             if (!result.IsSuccess)
@@ -41,7 +41,7 @@ namespace API.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<PromocaoDTO>> CreatePromocao(CreatePromocaoDTO dto, CancellationToken cancellationToken)
+        public async Task<ActionResult<PromocaoDTO>> AdicionarPromocao(CreatePromocaoDTO dto, CancellationToken cancellationToken)
         {
             var result = await _promocaoService.CreatePromocaoAsync(dto, cancellationToken);
             if (!result.IsSuccess)
@@ -52,7 +52,7 @@ namespace API.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdatePromocao(Guid id, UpdatePromocaoDTO dto, CancellationToken cancellationToken)
+        public async Task<IActionResult> AtualizarPromocao(Guid id, UpdatePromocaoDTO dto, CancellationToken cancellationToken)
         {
             var result = await _promocaoService.UpdatePromocaoAsync(id, dto, cancellationToken);
             if (!result.IsSuccess)

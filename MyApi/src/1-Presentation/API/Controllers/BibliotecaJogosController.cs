@@ -22,7 +22,7 @@ namespace API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BibliotecaJogoDTO>>> GetMinhaBiblioteca(CancellationToken cancellationToken)
+        public async Task<ActionResult<IEnumerable<BibliotecaJogoDTO>>> MinhaBiblioteca(CancellationToken cancellationToken)
         {
             var inicioCorrelation = HttpContext.Items["RequestStartTime"];
             var idClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
@@ -49,7 +49,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<BibliotecaJogoDTO>> AddJogo(CreateBibliotecaJogoDTO dto, CancellationToken cancellationToken)
+        public async Task<ActionResult<BibliotecaJogoDTO>> AdicionarJogo(CreateBibliotecaJogoDTO dto, CancellationToken cancellationToken)
         {
             var idClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(idClaim) || !Guid.TryParse(idClaim, out var currentUserId))
