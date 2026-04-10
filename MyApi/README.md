@@ -91,16 +91,22 @@ cd FCG
 ### 2. Configurar o banco de dados
 #Rodar com Docker
 1- Baixar a imagem oficial
+
 docker pull postgres 
+
 2- Subir o container
+
 docker run --name meu-postgres \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=postgres \
   -e POSTGRES_DB=MyApiDb \
   -p 5432:5432 \
   -d postgres
+
   3- Verificar se está rodando
+
 docker ps
+
 4- Conectar no banco
 Eu uso a ferramenta abaixo, pois me traz muita solidez
 DBeaver
