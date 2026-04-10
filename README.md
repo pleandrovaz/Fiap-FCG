@@ -108,7 +108,9 @@ docker run --name meu-postgres \
 docker ps
 
 4- Conectar no banco
+
 Eu uso a ferramenta abaixo, pois me traz muita solidez
+
 DBeaver
 
 Configuração de conexão:
